@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Всплывающее меню</title>
+    <style>
+        .button {
+            cursor: pointer;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .menu {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 40px;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            padding: 12px 16px;
+            z-index: 1;
+            margin-top: 5px;
+        }
+
+        .menu a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .menu a:hover {
+            background-color: #f1f1f1
+        }
+    </style>
+</head>
+<body>
+
+<!-- Кнопка для открытия меню -->
+<button class="button" onclick="toggleMenu()">Кликните здесь</button>
+
+<!-- Меню с тремя уровнями -->
+<div id="myMenu" class="menu">
+    <a href="#">Уровень 1</a>
+    <a href="#">Уровень 2</a>
+    <a href="#">Уровень 3</a>
+</div>
+
+<script>
+    // Функция для переключения отображения меню
+    function toggleMenu() {
+        const menu = document.getElementById('myMenu');
+        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Закрытие меню при клике вне его области
+    window.onclick = function(event) {
+        if (!event.target.matches('.button')) {
+            const myMenu = document.getElementById('myMenu');
+            if (myMenu.style.display === 'block') {
+                myMenu.style.display = 'none';
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
